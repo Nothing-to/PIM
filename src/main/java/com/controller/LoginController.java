@@ -58,9 +58,7 @@ public class LoginController {
         }
         return JsonMsg.fail().addInfo("register_error", "注册失败！！");
     }
-    public void test(){
 
-    }
 
 
 
