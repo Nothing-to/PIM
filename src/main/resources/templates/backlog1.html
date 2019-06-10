@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+			<title>待办详情</title>
+			<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
+			<link rel="stylesheet" type="text/css" href="css/confessionhome.css" />
+			<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+			<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>	
+	</head>
+	<body>
+		<div data-role="detailpage" id="detailsPage" data-theme="c">
+			<div data-role="header" data-position="fixed" data-theme="c">
+				<a href="biaobaihome.html" rel="external"  data-role="button" data-inline="true" data-icon="back">返回</a>
+				<h1>
+					详细信息
+				</h1>
+			</div>
+			<div data-role="content" data-theme="d">
+				<div class="detailsContent">
+					<div class="contentHead">
+						<img id="headpic" src="img/不.jpg" class="head" /> 
+						<div id="nameDiv" class="name">Warren</div>
+						<div id="timeDiv" class="time">03-12 13:121</div>
+					</div>
+					<div id="contentDiv" class="contentSyle">
+						<h1>详情：</h1></div>
+					<div id="picDiv" class="contentPic"></div>
+					<div id="MycommentDiv" class="comment">
+							<label for="#Mycommentinput"></label>
+							<textarea rows="100" cols="100" style="resize: none;height: 31.25rem;"></textarea>
+						<button value="编辑"></button>
+						<button value="删除"></button>
+					</div>
+			</div>
+			<div id="MyComPopup" data-role="popup">
+				<p id="Mymessage"></p>
+			</div>
+		</div>
+		
+		
+	</body>
+</html>

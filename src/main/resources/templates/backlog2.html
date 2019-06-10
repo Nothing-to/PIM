@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+			<title>添加</title>
+			<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
+			<link rel="stylesheet" type="text/css" href="css/confessionhome.css" />
+			<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+			<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>	
+	</head>
+	<body>
+		<div data-role="page">
+		    <div data-role="header" data-position="fixed" data-theme="c">
+		    	<a href="biaobaihome.html" rel="external"  data-role="button" data-inline="true" data-icon="back">返回</a>
+		    	<h1>
+		    		添加
+		    	</h1>
+		    </div>		    
+		    <div role="main" class="ui-content">
+		        <label for="userid">事项：</label><input type="text" id="userid" name="userid">
+				<br>
+		        <label for="password">内容：</label>
+		        <textarea rows="100" cols="100" style="resize: none;height: 31.25rem;"></textarea>
+		        <hr style="height:3px;border:none;border-top:3px double gray;" />
+		        <input type="button" id="login" value="提交" role="button" />
+		    </div>
+			<br/> 
+		</div>		
+	</body>
+</html>
