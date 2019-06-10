@@ -27,19 +27,19 @@ public class PimAuthenticationServiceImpl implements PimAuthenticationService{
     }
 
     @Override
-    public boolean verify(String user, String password) {
+    public Integer verify(String user, String password) {
 
         List<PimAuthentication>  list =Dao.getByPimNameStartingWithAndPimPassword(user,user);
         if (list.size()==1){
             boolean checkName=list.get(0).getPimName().equals(user);
             boolean checkPass=list.get(0).getPimPassword().equals(password);
             if (checkName && checkPass){
-                return true;
+                return list.get(0).getId();
             }else {
-                return false;
+                return -1;
             }
         }
-        return false;
+        return -1;
     }
 
 

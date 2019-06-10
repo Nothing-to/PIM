@@ -8,8 +8,20 @@ import com.bean.PimAuthentication;
  */
 public interface PimAuthenticationService {
 
+    /**
+     * 注册用户
+     * @param name
+     * @param password
+     * @return
+     */
     public PimAuthentication add(String name, String password);
 
-    public boolean verify(String user, String password);
+    /**
+     * 校验用户,正确则返回 用户Id，用于权限
+     * @param user
+     * @param password
+     * @return
+     */
+    public Integer verify(String user, String password);
 
 }
