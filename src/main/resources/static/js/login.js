@@ -27,7 +27,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (result) {
                 if (result.code==100) {
-                    location.href = "/MainInterface";
+                    location.href = "/mainPage";
                 } else {
                     alert(result.extendInfo.login_error);
                 }

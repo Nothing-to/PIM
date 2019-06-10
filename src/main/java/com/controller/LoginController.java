@@ -44,8 +44,7 @@ public class LoginController {
 
     @RequestMapping(value = "mainPage")
     public String mainPage(){
-        System.out.println("11111111111111111111111");
-        return "templates/mainPage.html";
+        return "mainPage";
     }
 
     /**
