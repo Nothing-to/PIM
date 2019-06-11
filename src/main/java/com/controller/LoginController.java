@@ -6,7 +6,11 @@ import com.service.PimAuthenticationService;
 import com.util.JsonMsg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -23,6 +27,7 @@ public class LoginController {
 
     /**
      * 登陆页面
+     *
      * @return
      */
     @GetMapping(value = "Login")
@@ -32,6 +37,7 @@ public class LoginController {
 
     /**
      * 注册页面
+     *
      * @return
      */
     @GetMapping(value = "register")
@@ -42,45 +48,49 @@ public class LoginController {
 
     /**
      * 主页面
+     *
      * @return
      */
     @GetMapping(value = "mainPage")
-    public String mainPage(){
-        return "mainPage";
+    public ModelAndView mainPage() {
+        return new ModelAndView("mainPage");
     }
 
     /**
      * 待办事项
+     *
      * @return
      */
     @GetMapping(value = "backlog")
-    public String backlog(){
+    public String backlog() {
         return "backlog";
     }
 
 
     /**
      * 待办事项  详情
+     *
      * @return
      */
     @GetMapping(value = "backlogDetails")
-    public String backlogDetails(){
+    public String backlogDetails() {
         return "backlog1";
     }
 
 
-
     /**
      * 待办事项 添加
+     *
      * @return
      */
     @GetMapping(value = "backlogAdd")
-    public String backlogAdd(){
+    public String backlogAdd() {
         return "backlog2";
     }
 
     /**
      * 登陆校验
+     *
      * @param jsonObject
      * @return
      */
@@ -92,9 +102,9 @@ public class LoginController {
         String password = jsonObject.get("password").toString();
         Integer checkKey = PimService.verify(userId, password);
 
-        if (checkKey!=-1) {
-            HttpSession session=request.getSession();
-            session.setAttribute("LoginId",checkKey);
+        if (checkKey != -1) {
+            HttpSession session = request.getSession();
+            session.setAttribute("LoginId", checkKey);
             return JsonMsg.success();
         }
         return JsonMsg.fail().addInfo("login_error", "账号或密码错误");
@@ -103,6 +113,7 @@ public class LoginController {
 
     /**
      * 注册用户
+     *
      * @param jsonObject
      * @return
      */
@@ -117,10 +128,6 @@ public class LoginController {
         }
         return JsonMsg.fail().addInfo("register_error", "注册失败！！");
     }
-
-
-
-
 
 
 }

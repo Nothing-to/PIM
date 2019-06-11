@@ -24,6 +24,6 @@ public interface PimBacklogService {
      * @param pimBacklog
      * @return
      */
-    Integer addBacklog(PimBacklog pimBacklog);
+    PimBacklog addBacklog(PimBacklog pimBacklog);
 
 }

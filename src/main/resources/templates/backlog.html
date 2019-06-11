@@ -7,10 +7,32 @@
 			<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
 			<link rel="stylesheet" type="text/css" href="css/confessionhome.css" />
 			<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-			<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>	
+			<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+
 	</head>
 	<body>
-		
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "/backlogAjax",
+                success: function (result) {
+                    $.each(result,function(idx,obj){
+                        $("#contentList").append("<li><a href='"+obj.id
+                            +"'rel=external><img src='"+obj.backlogImage
+                            +"'/><h3 class='listtitle'>"+obj.backlogTitle
+                            +"<span class='timestyle'>"+obj.backlogDate
+                            +"</span></h3><p>"+obj.backlogContent
+                            +"</p></a></li>").listview('refresh');
+                    });
+                },
+                error: function () {
+                    alert("未知异常！！");
+                }
+            });
+        });
+    </script>
 		<div id="contentPage2" data-role="page">		
 			<div data-role="header" data-position="fixed" data-theme="c">
 				<a href="/mainPage" rel="external" data-role="button" data-inline="true" data-icon="back">返回</a>
@@ -23,45 +45,12 @@
 				<div id="wrapperIndex" class="wrapper">
 					<div id="scrollerIndex" class="scroller">
 						<ul data-role="listview" id="contentList" class="contentList">
-							 <li>
-
-								<a href="/backlogDetails" rel=external>
-									<img src="image/不.jpg" />
-									<h3 class="listtitle">
-									标题
-									<span class="timestyle">03-12 13:12</span>
-								</h3>
-									<p>1111111111111111111111111111111111111111</p>
-									
-									</a>
-							</li> 
-							
-							 <li>
-								<a href="/backlogDetails" rel=external>
-									<img src="image/不.jpg" />
-									<h3 class="listtitle">
-									标题
-									<span class="timestyle">03-12 13:12</span>
-								</h3>
-									<p>12313131</p>
-									
-									</a>
-							</li> 
-
 						</ul> 
 					</div>
 				</div>
 			</div>
-
-			
 			<div id="mypopup" data-role="popup"><p id="message"></p></div>
 		</div>
-
-    <script type="text/javascript">
-
-        $("#contentList").append("<li><a href='#' rel=external><img src='image/不.jpg' /><h3 class='listtitle'>标题<span class='timestyle'>03-12 13:12</span></h3><p>12313131</p></a></li>");
-
-    </script>
 
 	</body>
 </html>

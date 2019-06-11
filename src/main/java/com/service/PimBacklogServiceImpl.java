@@ -23,13 +23,9 @@ public class PimBacklogServiceImpl implements PimBacklogService {
         return dao.findByBelong(belong);
     }
 
-    /**
-     * jpa 插入操作只能原生SQL，无奈之举
-     * @param pimBacklog
-     * @return
-     */
+
     @Override
-    public Integer addBacklog(PimBacklog pimBacklog) {
-        return dao.addBacklog(pimBacklog.getBacklogContent(), pimBacklog.getBacklogDate(), pimBacklog.getBacklogImage(), pimBacklog.getBacklogTitle(), pimBacklog.getBelong());
+    public PimBacklog addBacklog(PimBacklog pimBacklog) {
+       return dao.save(pimBacklog);
     }
 }
