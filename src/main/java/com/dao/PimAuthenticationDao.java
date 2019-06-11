@@ -11,5 +11,11 @@ import java.util.List;
  */
 public interface PimAuthenticationDao extends JpaRepository<PimAuthentication,Integer> {
 
+    /**
+     * 账号密码校验
+     * @param pimName
+     * @param password
+     * @return
+     */
     List<PimAuthentication> getByPimNameStartingWithAndPimPassword(String pimName, String password);
 }

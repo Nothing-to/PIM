@@ -6,10 +6,7 @@ import com.service.PimAuthenticationService;
 import com.util.JsonMsg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -28,7 +25,7 @@ public class LoginController {
      * 登陆页面
      * @return
      */
-    @RequestMapping(value = "Login")
+    @GetMapping(value = "Login")
     public String Login() {
         return "Login";
     }
@@ -37,14 +34,49 @@ public class LoginController {
      * 注册页面
      * @return
      */
-    @RequestMapping(value = "register")
+    @GetMapping(value = "register")
     public String Interface() {
         return "register";
     }
 
-    @RequestMapping(value = "mainPage")
+
+    /**
+     * 主页面
+     * @return
+     */
+    @GetMapping(value = "mainPage")
     public String mainPage(){
         return "mainPage";
+    }
+
+    /**
+     * 待办事项
+     * @return
+     */
+    @GetMapping(value = "backlog")
+    public String backlog(){
+        return "backlog";
+    }
+
+
+    /**
+     * 待办事项  详情
+     * @return
+     */
+    @GetMapping(value = "backlogDetails")
+    public String backlogDetails(){
+        return "backlog1";
+    }
+
+
+
+    /**
+     * 待办事项 添加
+     * @return
+     */
+    @GetMapping(value = "backlogAdd")
+    public String backlogAdd(){
+        return "backlog2";
     }
 
     /**
