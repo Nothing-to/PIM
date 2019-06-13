@@ -26,4 +26,8 @@ public interface PimBacklogService {
      */
     PimBacklog addBacklog(PimBacklog pimBacklog);
 
+
+    List<PimBacklog> getById(Integer id);
+
+
 }

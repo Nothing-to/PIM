@@ -56,37 +56,7 @@ public class LoginController {
         return new ModelAndView("mainPage");
     }
 
-    /**
-     * 待办事项
-     *
-     * @return
-     */
-    @GetMapping(value = "backlog")
-    public String backlog() {
-        return "backlog";
-    }
 
-
-    /**
-     * 待办事项  详情
-     *
-     * @return
-     */
-    @GetMapping(value = "backlogDetails")
-    public String backlogDetails() {
-        return "backlog1";
-    }
-
-
-    /**
-     * 待办事项 添加
-     *
-     * @return
-     */
-    @GetMapping(value = "backlogAdd")
-    public String backlogAdd() {
-        return "backlog2";
-    }
 
     /**
      * 登陆校验

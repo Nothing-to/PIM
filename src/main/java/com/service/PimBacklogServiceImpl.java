@@ -5,6 +5,7 @@ import com.dao.PimBacklogDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -28,4 +29,11 @@ public class PimBacklogServiceImpl implements PimBacklogService {
     public PimBacklog addBacklog(PimBacklog pimBacklog) {
        return dao.save(pimBacklog);
     }
+
+    @Override
+    public List<PimBacklog> getById(Integer id) {
+        return dao.findById(id).map(Collections::singletonList).orElse(Collections.emptyList());
+    }
+
+
 }

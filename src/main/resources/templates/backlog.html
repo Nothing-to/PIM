@@ -19,8 +19,8 @@
                 url: "/backlogAjax",
                 success: function (result) {
                     $.each(result,function(idx,obj){
-                        $("#contentList").append("<li><a href='"+obj.id
-                            +"'rel=external><img src='"+obj.backlogImage
+                        $("#contentList").append("<li><a href='/backlogDetails/"+obj.id
+                            +"'rel=external><img src='image/"+obj.backlogImage
                             +"'/><h3 class='listtitle'>"+obj.backlogTitle
                             +"<span class='timestyle'>"+obj.backlogDate
                             +"</span></h3><p>"+obj.backlogContent

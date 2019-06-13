@@ -7,10 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.transaction.Transactional;
-
-import static org.junit.Assert.*;
-
 /**
  * @Author: 刘冠麟
  * @Date: 2019-06-11 19:21
@@ -24,13 +20,13 @@ public class PimBacklogServiceImplTest {
 
     @Test
     public void getByBelongAll() {
-        System.out.println(service.getByBelongAll(1)+"************");
+        System.out.println(service.getByBelongAll(1) + "************");
 
     }
 
     @Test
     public void addBacklog() {
-        PimBacklog pimBacklog=new PimBacklog();
+        PimBacklog pimBacklog = new PimBacklog();
         pimBacklog.setBacklogContent("1");
         pimBacklog.setBacklogDate("1");
         pimBacklog.setBacklogImage("1");
@@ -38,6 +34,11 @@ public class PimBacklogServiceImplTest {
         pimBacklog.setBelong(1);
         service.addBacklog(pimBacklog);
 
+    }
+
+    @Test
+    public void getById() {
+        System.out.println(service.getById(2));
     }
 
 
