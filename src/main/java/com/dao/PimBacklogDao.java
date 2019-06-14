@@ -2,6 +2,10 @@ package com.dao;
 
 import com.bean.PimBacklog;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +29,19 @@ public interface PimBacklogDao extends JpaRepository<PimBacklog,Integer> {
      */
     @Override
     Optional<PimBacklog> findById(Integer id);
+
+    /**
+     * 根据 id 更新
+     * @param id
+     * @param title
+     * @param content
+     * @return
+     */
+    @Modifying
+    @Query("update PimBacklog p set p.backlogTitle=:title, p.backlogContent=:content where id=:id")
+    Integer updateBacklog(@Param("id") Integer id,@Param("title") String title,@Param("content") String content);
+
+
 
 
 }

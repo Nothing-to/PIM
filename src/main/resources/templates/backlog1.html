@@ -6,7 +6,6 @@
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
     <title>待办详情</title>
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
-    <!--<link rel="stylesheet" type="text/css" href="css/confessionhome.css"/>-->
     <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
 </head>
@@ -30,7 +29,7 @@
             <div id="MycommentDiv" class="comment">
                 <textarea rows="100" cols="100" readonly id="backlogContent"  style="resize: none;height: 31.25rem;"></textarea>
                 <a href="/backlogEdit" rel='external'><button value="编辑"></button></a>
-                <button value="删除"></button>
+                <button id="backlogDel" value="删除"></button>
             </div>
         </div>
         <div id="MyComPopup" data-role="popup">
@@ -40,18 +39,41 @@
 </div>
 
 <script type="text/javascript">
+    var id;
     $(function () {
         $.ajax({
             type: "POST",
             dataType: "json",
+            contentType: "application/json",
             url: "/backlogDetailsAJAX",
             success: function (result) {
                 $.each(result,function(idx,obj){
+                    id=obj.id;
                     $("#nameDiv").html(obj.backlogTitle);
-                    $("#timeDiv").html(obj.backlogDate);
+                    $("#timeDiv").html("创建时间："+obj.backlogDate);
                     $("#backlogContent").html(obj.backlogContent);
 
                 });
+            },
+            error: function () {
+                alert("未知异常！！");
+            }
+        });
+    });
+
+    $("#backlogDel").click(function () {
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            url: "/backlogDel",
+            data:JSON.stringify({delId:id}),
+            success: function (result) {
+                if (result.code==100){
+                    location.href="/backlog";
+                } else {
+                    alert("删除失败！！！");
+                }
             },
             error: function () {
                 alert("未知异常！！");

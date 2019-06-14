@@ -41,5 +41,15 @@ public class PimBacklogServiceImplTest {
         System.out.println(service.getById(2));
     }
 
+    @Test
+    public void updateBacklogId(){
+        System.out.println(service.updateBacklogId(2, "22222", "222222"));
+    }
+
+    @Test
+    public void deleteBacklog(){
+        service.deleteBacklog(4);
+    }
+
 
 }

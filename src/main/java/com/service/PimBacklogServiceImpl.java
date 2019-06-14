@@ -5,6 +5,7 @@ import com.dao.PimBacklogDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * @Author: 刘冠麟
  * @Date: 2019-06-11 18:38
  */
+
 @Service
 public class PimBacklogServiceImpl implements PimBacklogService {
 
@@ -33,6 +35,17 @@ public class PimBacklogServiceImpl implements PimBacklogService {
     @Override
     public List<PimBacklog> getById(Integer id) {
         return dao.findById(id).map(Collections::singletonList).orElse(Collections.emptyList());
+    }
+
+    @Transactional
+    @Override
+    public Integer updateBacklogId(Integer id, String title, String content) {
+        return dao.updateBacklog(id, title, content);
+    }
+
+    @Override
+    public void deleteBacklog(Integer id) {
+        dao.deleteById(id);
     }
 
 

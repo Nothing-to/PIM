@@ -5,7 +5,6 @@
 	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 			<title>添加</title>
 			<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
-			<!--<link rel="stylesheet" type="text/css" href="css/confessionhome.css" />-->
 			<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 			<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>	
 	</head>
@@ -18,14 +17,37 @@
 		    	</h1>
 		    </div>		    
 		    <div role="main" class="ui-content">
-		        <label for="userid">事项：</label><input type="text" id="userid" name="userid">
+		        <label >事项：</label>
+                <input type="text" id="userTitle">
 				<br>
 		        <label >内容：</label>
-		        <textarea rows="100" cols="100" style="resize: none;height: 31.25rem;"></textarea>
+		        <textarea rows="100" id="UserContent" cols="100" style="resize: none;height: 31.25rem;"></textarea>
 		        <hr style="height:3px;border:none;border-top:3px double gray;" />
-		        <input type="button" id="login" value="提交" role="button" />
+		        <input type="button" id="submitAdd" value="提交" role="button" />
 		    </div>
 			<br/> 
-		</div>		
+		</div>
+
+	<script type="text/javascript">
+        $("#submitAdd").click(function () {
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: "/backlogAddAJAX",
+                data: JSON.stringify({userTitle:$("#userTitle").val(),UserContent:$("#UserContent").val()}),
+                dataType: 'json',
+                success: function (result) {
+                    if (result.code==100) {
+                        window.location.href = "/backlog";
+                    } else {
+                        alert("添加失败！！");
+                    }
+                },
+                error: function () {
+                    alert("未知异常！！");
+                }
+            });
+        });
+    </script>
 	</body>
 </html>

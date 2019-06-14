@@ -59,7 +59,12 @@
             success: function (result) {
                 if (result.code==100){
                     location.href="/backlog";
+                }else {
+                    alert("保存失败！！");
                 }
+            },
+            error: function () {
+                alert("未知异常！！");
             }
         });
     });
