@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.bean.PimBacklog;
 import com.service.PimBacklogService;
+import com.util.JsonMsg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -57,12 +58,36 @@ public class BacklogController {
         return new ModelAndView("backlog2");
     }
 
+    /**
+     * 待办事项 编辑
+     * @return
+     */
     @GetMapping(value = "backlogEdit")
     public ModelAndView backlogEdit() {
         return new ModelAndView("backlog3");
     }
 
+    /**
+     *  待办事项 编辑 并保存
+     * @param jsonObject
+     * @return
+     */
+    @PostMapping(value = "backlogEditAJAX")
+    @ResponseBody
+    public JsonMsg backlogEditAJAX(@RequestBody JSONObject jsonObject){
+        Integer id=Integer.parseInt(jsonObject.get("id").toString());
+        String title = jsonObject.get("title").toString();
+        String content = jsonObject.get("content").toString();
+        System.out.println(id+title+content);
 
+        return JsonMsg.success();
+    }
+
+
+    /**
+     * 待办事项  根据id 获取 单条内容
+     * @return
+     */
     @PostMapping(value = "backlogDetailsAJAX")
     @ResponseBody
     public String backlogContent(){
