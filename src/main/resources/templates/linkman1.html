@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
-<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
+    <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
 </head>
 <body>
 <div data-role="page" id="pageone">
-  <div data-role="content">
-  <div data-role="header" data-position="fixed" data-theme="c">
-  	<a href="/linkman" rel="external" data-role="button" data-inline="true" data-icon="back">返回</a>
-  	<h1>
-  		添加
-  	</h1>  	
-  </div>
-	<div role="main" class="ui-content">
-	    <label>姓名：</label><input type="text" id="LinkName">
-		<br>
-		<label>手机号：</label><input type="text" id="LinkNumber"><br>
-		
-		<label>邮箱：</label><input type="text" id="LinkEmail"><br>
-		
-		<label>备注：</label><input type="text" id="LinkRemark" ><br>
-	    
-	   
-	    <hr style="height:3px;border:none;border-top:3px double gray;" />
-	    <input type="button" id="LinkSubmit" value="提交" role="button" />
-	</div>
+    <div data-role="content">
+        <div data-role="header" data-position="fixed" data-theme="c">
+            <a href="/linkman" rel="external" data-role="button" data-inline="true" data-icon="back">返回</a>
+            <h1>
+                添加
+            </h1>
+        </div>
+        <div role="main" class="ui-content">
+            <label>姓名：</label><input type="text" id="LinkName">
+            <br>
+            <label>手机号：</label><input type="text" id="LinkNumber"><br>
+
+            <label>邮箱：</label><input type="text" id="LinkEmail"><br>
+
+            <label>备注：</label><input type="text" id="LinkRemark"><br>
 
 
-  </div>
+            <hr style="height:3px;border:none;border-top:3px double gray;"/>
+            <input type="button" id="LinkSubmit" value="提交" role="button"/>
+        </div>
+
+
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -38,13 +38,15 @@
             type: "POST",
             contentType: "application/json",
             url: "/linkmanAddAJAX",
-            data: JSON.stringify({LinkName:$("#LinkName").val(),
-                                 LinkNumber:$("#LinkNumber").val(),
-				                 LinkEmail:$("#LinkEmail").val(),
-                                 LinkRemark:$("#LinkRemark").val()}),
+            data: JSON.stringify({
+                LinkName: $("#LinkName").val(),
+                LinkNumber: $("#LinkNumber").val(),
+                LinkEmail: $("#LinkEmail").val(),
+                LinkRemark: $("#LinkRemark").val()
+            }),
             dataType: 'json',
             success: function (result) {
-                if (result.code==100) {
+                if (result.code == 100) {
                     window.location.href = "/linkman";
                 } else {
                     alert("添加失败！！");

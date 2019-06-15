@@ -3,14 +3,31 @@ package com.util;
 import java.util.HashMap;
 import java.util.Map;
 
-//工具类，用于json返回
+/**
+ * 工具类，用于json返回
+ * @author 刘冠麟
+ */
 public class JsonMsg {
 
 
     private int code;
-    private  String msg;
-    private Map<String,Object> extendInfo=new HashMap<>();
+    private String msg;
+    private Map<String, Object> extendInfo = new HashMap<>();
 
+    public static JsonMsg success() {
+        JsonMsg res = new JsonMsg();
+        res.setCode(100);
+        res.setMsg("操作超过！");
+        return res;
+    }
+
+    public static JsonMsg fail() {
+
+        JsonMsg res = new JsonMsg();
+        res.setCode(200);
+        res.setMsg("操作失败！");
+        return res;
+    }
 
     public int getCode() {
         return code;
@@ -36,28 +53,10 @@ public class JsonMsg {
         this.extendInfo = extendInfo;
     }
 
-
-    public static JsonMsg success(){
-        JsonMsg res=new JsonMsg();
-        res.setCode(100);
-        res.setMsg("操作超过！");
-        return res;
-    }
-
-    public static JsonMsg fail(){
-
-        JsonMsg res=new JsonMsg();
-        res.setCode(200);
-        res.setMsg("操作失败！");
-        return res;
-    }
-
-    public JsonMsg addInfo(String key,Object object){
-        this.extendInfo.put(key,object);
+    public JsonMsg addInfo(String key, Object object) {
+        this.extendInfo.put(key, object);
         return this;
     }
-
-
 
 
 }

@@ -10,6 +10,7 @@ public interface PimAuthenticationService {
 
     /**
      * 注册用户
+     *
      * @param name
      * @param password
      * @return
@@ -18,6 +19,7 @@ public interface PimAuthenticationService {
 
     /**
      * 校验用户,正确则返回 用户Id，用于权限
+     *
      * @param user
      * @param password
      * @return

@@ -24,52 +24,47 @@ public class LinkmanController {
 
 
     @GetMapping(value = "linkman")
-    public ModelAndView linkman(){
+    public ModelAndView linkman() {
         return new ModelAndView("linkman");
     }
 
     @GetMapping(value = "linkmanAdd")
-    public ModelAndView linkmanAdd(){
+    public ModelAndView linkmanAdd() {
         return new ModelAndView("linkman1");
     }
 
     @PostMapping(value = "linkmanAJAX")
     @ResponseBody
-    public String linkmanAJAX(HttpSession session){
+    public String linkmanAJAX(HttpSession session) {
         List<PimLinkman> backlogs = service.getByBelongAll((Integer) session.getAttribute("LoginId"));
         return JSONArray.toJSONString(backlogs);
     }
 
     @DeleteMapping(value = "linkmanDeleteAJAX")
     @ResponseBody
-    public JsonMsg linkmanDeleteAJAX(@RequestBody JSONObject jsonObject){
+    public JsonMsg linkmanDeleteAJAX(@RequestBody JSONObject jsonObject) {
         service.deleteLinkman(Integer.parseInt(jsonObject.get("delId").toString()));
         return JsonMsg.success();
     }
 
     @PostMapping(value = "linkmanAddAJAX")
     @ResponseBody
-    public JsonMsg linkmanAddAJAX(@RequestBody JSONObject jsonObject, HttpSession session){
-        PimLinkman pimLinkman=new PimLinkman();
+    public JsonMsg linkmanAddAJAX(@RequestBody JSONObject jsonObject, HttpSession session) {
+        PimLinkman pimLinkman = new PimLinkman();
         pimLinkman.setBelong((Integer) session.getAttribute("LoginId"));
         pimLinkman.setName(jsonObject.getString("LinkName"));
         pimLinkman.setNumber(jsonObject.getInteger("LinkNumber"));
         pimLinkman.setEmail(jsonObject.getString("LinkEmail"));
         pimLinkman.setRemark(jsonObject.getString("LinkRemark"));
-        PimLinkman result=service.addLinkman(pimLinkman);
-        if (pimLinkman.equals(result)){
+        PimLinkman result = service.addLinkman(pimLinkman);
+        if (pimLinkman.equals(result)) {
             return JsonMsg.success();
-        }else {
+        } else {
             return JsonMsg.fail();
         }
 
 
-
     }
-
-
-
-
 
 
 }

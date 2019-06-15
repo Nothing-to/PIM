@@ -12,14 +12,14 @@ import java.util.List;
  * @Date: 2019-06-05 22:57
  */
 @Service
-public class PimAuthenticationServiceImpl implements PimAuthenticationService{
+public class PimAuthenticationServiceImpl implements PimAuthenticationService {
 
     @Autowired
     private PimAuthenticationDao Dao;
 
     @Override
-    public PimAuthentication add(String name,String password){
-        PimAuthentication pimAuthentication=new PimAuthentication();
+    public PimAuthentication add(String name, String password) {
+        PimAuthentication pimAuthentication = new PimAuthentication();
         pimAuthentication.setPimName(name);
         pimAuthentication.setPimPassword(password);
         return Dao.save(pimAuthentication);
@@ -29,13 +29,13 @@ public class PimAuthenticationServiceImpl implements PimAuthenticationService{
     @Override
     public Integer verify(String user, String password) {
 
-        List<PimAuthentication>  list =Dao.getByPimNameStartingWithAndPimPassword(user,user);
-        if (list.size()==1){
-            boolean checkName=list.get(0).getPimName().equals(user);
-            boolean checkPass=list.get(0).getPimPassword().equals(password);
-            if (checkName && checkPass){
+        List<PimAuthentication> list = Dao.getByPimNameStartingWithAndPimPassword(user, user);
+        if (list.size() == 1) {
+            boolean checkName = list.get(0).getPimName().equals(user);
+            boolean checkPass = list.get(0).getPimPassword().equals(password);
+            if (checkName && checkPass) {
                 return list.get(0).getId();
-            }else {
+            } else {
                 return -1;
             }
         }

@@ -74,13 +74,14 @@ public class BacklogController {
 
     /**
      * 删除
+     *
      * @param jsonObject
      * @return
      */
     @PostMapping("backlogDel")
     @ResponseBody
-    public JsonMsg backlogDel(@RequestBody JSONObject jsonObject){
-        Integer id=(Integer) jsonObject.get("delId");
+    public JsonMsg backlogDel(@RequestBody JSONObject jsonObject) {
+        Integer id = (Integer) jsonObject.get("delId");
         service.deleteBacklog(id);
         return JsonMsg.success();
     }

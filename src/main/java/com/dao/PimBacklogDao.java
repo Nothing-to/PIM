@@ -13,10 +13,11 @@ import java.util.Optional;
  * @Author: 刘冠麟
  * @Date: 2019-06-11 18:37
  */
-public interface PimBacklogDao extends JpaRepository<PimBacklog,Integer> {
+public interface PimBacklogDao extends JpaRepository<PimBacklog, Integer> {
 
     /**
      * 根据 用户id 获取相应的 内容
+     *
      * @param belong
      * @return
      */
@@ -24,6 +25,7 @@ public interface PimBacklogDao extends JpaRepository<PimBacklog,Integer> {
 
     /**
      * 根据id 获取单条 详情
+     *
      * @param id
      * @return
      */
@@ -32,6 +34,7 @@ public interface PimBacklogDao extends JpaRepository<PimBacklog,Integer> {
 
     /**
      * 根据 id 更新
+     *
      * @param id
      * @param title
      * @param content
@@ -39,9 +42,7 @@ public interface PimBacklogDao extends JpaRepository<PimBacklog,Integer> {
      */
     @Modifying
     @Query("update PimBacklog p set p.backlogTitle=:title, p.backlogContent=:content where id=:id")
-    Integer updateBacklog(@Param("id") Integer id,@Param("title") String title,@Param("content") String content);
-
-
+    Integer updateBacklog(@Param("id") Integer id, @Param("title") String title, @Param("content") String content);
 
 
 }

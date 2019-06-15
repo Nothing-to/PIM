@@ -1,55 +1,56 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-			<title>待办事项</title>
-			<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
-			<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-			<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>待办事项</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
+    <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
 
-	</head>
-	<body>
-    <script type="text/javascript">
-        $(function () {
-            $.ajax({
-                type: "POST",
-                dataType: "json",
-                url: "/backlogAjax",
-                success: function (result) {
-                    $.each(result,function(idx,obj){
-                        $("#contentList").append("<li><a href='/backlogDetails/"+obj.id
-                            +"'rel=external><img src='image/"+obj.backlogImage
-                            +"'/><h3 class='listtitle'>"+obj.backlogTitle
-                            +"<br><span class='timestyle'>"+obj.backlogDate
-                            +"</span></h3><p>"+obj.backlogContent
-                            +"</p></a></li>").listview('refresh');
-                    });
-                },
-                error: function () {
-                    alert("未知异常！！");
-                }
-            });
+</head>
+<body>
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/backlogAjax",
+            success: function (result) {
+                $.each(result, function (idx, obj) {
+                    $("#contentList").append("<li><a href='/backlogDetails/" + obj.id
+                        + "'rel=external><img src='image/" + obj.backlogImage
+                        + "'/><h3 class='listtitle'>" + obj.backlogTitle
+                        + "<br><span class='timestyle'>" + obj.backlogDate
+                        + "</span></h3><p>" + obj.backlogContent
+                        + "</p></a></li>").listview('refresh');
+                });
+            },
+            error: function () {
+                alert("未知异常！！");
+            }
         });
-    </script>
-		<div id="contentPage2" data-role="page">		
-			<div data-role="header" data-position="fixed" data-theme="c">
-				<a href="/mainPage" rel="external" data-role="button" data-inline="true" data-icon="back">返回</a>
-				<h1>
-					待办事项
-				</h1>
-				<a href="/backlogAdd" rel="external" data-role="button" data-inline="true" data-icon="plus">添加</a>
-			</div>
-			<div data-role="content" data-theme="c">
-				<div id="wrapperIndex" class="wrapper">
-					<div id="scrollerIndex" class="scroller">
-						<ul data-role="listview" id="contentList" class="contentList">
-						</ul> 
-					</div>
-				</div>
-			</div>
-			<div id="mypopup" data-role="popup"><p id="message"></p></div>
-		</div>
+    });
+</script>
+<div id="contentPage2" data-role="page">
+    <div data-role="header" data-position="fixed" data-theme="c">
+        <a href="/mainPage" rel="external" data-role="button" data-inline="true" data-icon="back">返回</a>
+        <h1>
+            待办事项
+        </h1>
+        <a href="/backlogAdd" rel="external" data-role="button" data-inline="true" data-icon="plus">添加</a>
+    </div>
+    <div data-role="content" data-theme="c">
+        <div id="wrapperIndex" class="wrapper">
+            <div id="scrollerIndex" class="scroller">
+                <ul data-role="listview" id="contentList" class="contentList">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="mypopup" data-role="popup"><p id="message"></p></div>
+</div>
 
-	</body>
+</body>
 </html>

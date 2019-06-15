@@ -20,15 +20,19 @@
     <div data-role="content" data-theme="d">
         <div class="detailsContent">
             <div class="contentHead">
-                <div id="nameDiv" class="name"></div><br>
+                <div id="nameDiv" class="name"></div>
+                <br>
                 <div id="timeDiv" class="time"></div>
             </div>
             <div id="contentDiv" class="contentSyle">
                 <h1>详情：</h1></div>
             <div id="picDiv" class="contentPic"></div>
             <div id="MycommentDiv" class="comment">
-                <textarea rows="100" cols="100" readonly id="backlogContent"  style="resize: none;height: 31.25rem;"></textarea>
-                <a href="/backlogEdit" rel='external'><button value="编辑"></button></a>
+                <textarea rows="100" cols="100" readonly id="backlogContent"
+                          style="resize: none;height: 31.25rem;"></textarea>
+                <a href="/backlogEdit" rel='external'>
+                    <button value="编辑"></button>
+                </a>
                 <button id="backlogDel" value="删除"></button>
             </div>
         </div>
@@ -47,10 +51,10 @@
             contentType: "application/json",
             url: "/backlogDetailsAJAX",
             success: function (result) {
-                $.each(result,function(idx,obj){
-                    id=obj.id;
+                $.each(result, function (idx, obj) {
+                    id = obj.id;
                     $("#nameDiv").html(obj.backlogTitle);
-                    $("#timeDiv").html("创建时间："+obj.backlogDate);
+                    $("#timeDiv").html("创建时间：" + obj.backlogDate);
                     $("#backlogContent").html(obj.backlogContent);
 
                 });
@@ -67,10 +71,10 @@
             dataType: "json",
             contentType: "application/json",
             url: "/backlogDel",
-            data:JSON.stringify({delId:id}),
+            data: JSON.stringify({delId: id}),
             success: function (result) {
-                if (result.code==100){
-                    location.href="/backlog";
+                if (result.code == 100) {
+                    location.href = "/backlog";
                 } else {
                     alert("删除失败！！！");
                 }

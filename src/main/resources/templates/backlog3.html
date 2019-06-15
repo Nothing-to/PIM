@@ -57,9 +57,9 @@
             data: JSON.stringify({id: id, title: $("#nameDiv").val(), content: $("#backlogContent").val()}),
             dataType: 'json',
             success: function (result) {
-                if (result.code==100){
-                    location.href="/backlog";
-                }else {
+                if (result.code == 100) {
+                    location.href = "/backlog";
+                } else {
                     alert("保存失败！！");
                 }
             },

@@ -2,7 +2,6 @@ package com.service;
 
 import com.bean.PimBacklog;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -39,6 +38,7 @@ public interface PimBacklogService {
 
     /**
      * 更新
+     *
      * @param id
      * @param title
      * @param content
@@ -48,10 +48,10 @@ public interface PimBacklogService {
 
     /**
      * 删除
+     *
      * @param id
      */
     void deleteBacklog(Integer id);
-
 
 
 }
