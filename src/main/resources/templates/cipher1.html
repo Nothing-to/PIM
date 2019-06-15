@@ -20,21 +20,48 @@
             </h1>
         </div>
         <div role="main" class="ui-content">
-            <label for="userid">密码平台：</label><input type="text" id="userid" name="userid">
+            <label>密码平台：</label><input type="text" id="platform">
             <br>
-            <label for="userid">账号：</label><input type="text" id="userid" name="userid"><br>
+            <label>账号：</label><input type="text" id="account"><br>
 
-            <label for="userid">密码：</label><input type="text" id="userid" name="userid"><br>
+            <label>密码：</label><input type="text" id="cipher"><br>
 
-            <label for="userid">备注：</label><input type="text" id="userid" name="userid"><br>
+            <label>备注：</label><input type="text" id="remark"><br>
 
 
             <hr style="height:3px;border:none;border-top:3px double gray;"/>
-            <input type="button" id="login" value="提交" role="button"/>
+            <input type="button" id="CipSubmit" value="提交" role="button"/>
         </div>
 
     </div>
 </div>
+
+<script type="text/javascript">
+    $("#CipSubmit").click(function () {
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/cipherAddAJAX",
+            data: JSON.stringify({
+                platform: $("#platform").val(),
+                account: $("#account").val(),
+                cipher: $("#cipher").val(),
+                remark: $("#remark").val()
+            }),
+            dataType: 'json',
+            success: function (result) {
+                if (result.code == 100) {
+                    window.location.href = "/cipher";
+                } else {
+                    alert("添加失败！！");
+                }
+            },
+            error: function () {
+                alert("未知异常！！");
+            }
+        });
+    });
+</script>
 
 </body>
 </html>

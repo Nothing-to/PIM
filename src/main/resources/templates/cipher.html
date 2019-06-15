@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
     <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+    <script src="layer/layer.js"></script>
 </head>
 <body>
 
@@ -21,44 +22,66 @@
     </div>
 
     <div data-role="content">
-        <div data-role="collapsible-set">
-            <div data-role="collapsible">
-                <h3>微信平台</h3>
-                <h1 style="display: inline;">账号: </h1>
-                <h1 style="display: inline;">123456</h1><br><br>
-                <h1 style="display: inline;">密码: </h1>
-                <h1 style="display: inline;">123456</h1>
-                <button type="button" value="删除"></button>
-            </div>
-            <div data-role="collapsible">
-                <h3>QQ平台</h3>
-                <h1 style="display: inline;">账号: </h1>
-                <h1 style="display: inline;">123456</h1><br><br>
-                <h1 style="display: inline;">密码: </h1>
-                <h1 style="display: inline;">123456</h1>
-                <button type="button" value="删除"></button>
-            </div>
-            <div data-role="collapsible">
-                <h3>支付宝平台</h3>
-                <h1 style="display: inline;">账号: </h1>
-                <h1 style="display: inline;">123456</h1><br><br>
-                <h1 style="display: inline;">密码: </h1>
-                <h1 style="display: inline;">123456</h1>
-                <button type="button" value="删除"></button>
-            </div>
-            <div data-role="collapsible">
-                <h3>淘宝平台</h3>
-                <h1 style="display: inline;">账号: </h1>
-                <h1 style="display: inline;">123456</h1><br><br>
-                <h1 style="display: inline;">密码: </h1>
-                <h1 style="display: inline;">123456</h1>
-                <button type="button" value="删除"></button>
-            </div>
+        <div data-role="collapsible-set" >
+            <ul id="cipherList" data-role="listview"   data-inset="true" data-divider-theme="c">
+            </ul>
         </div>
-
-
-        <div id="mypopup" data-role="popup"><p id="message"></p></div>
     </div>
+    </div>
+
+
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/cipherAJAX",
+            success: function (result) {
+                $.each(result, function (idx, obj) {
+                    $("#cipherList").append("<li><div data-role='collapsible'><p style='display: none'>"
+                        +obj.id+"</p><h3>"
+                        +obj.platform+"</h3> <h1 style='display: inline;'>账号: </h1> <h1 style='display: inline;'>"
+                        +obj.account+"</h1><br><br> <h1 style='display: inline;'>密码: </h1><h1 style='display: inline;'>"
+                        +obj.cipher+"</h1><br><br><h1 style='display: inline;'>备注: </h1><h1 style=\"display: inline;\">"
+                        +obj.remark+"</h1> <button class='delCipher' type='button' value='删除'>" +
+                        "</button></div></li>").trigger("create").listview('refresh');
+                });
+            },
+            error: function () {
+                alert("未知异常！！");
+            }
+        });
+    });
+
+
+    $(document).on("click", ".delCipher", function () {
+        var temp = $(this).parent().parent().find("p:eq(0)").text();
+        layer.confirm("确认删除吗？", {
+            time: 0
+            , btn: ['确定', '取消']
+            , yes: function (index) {
+                layer.close(index);
+                $.ajax({
+                    dataType: "json",
+                    contentType: "application/json",
+                    url: "/cipherDeleteAJAX",
+                    type: "DELETE",
+                    data: JSON.stringify({delId: temp}),
+                    success: function (result) {
+                        if (result.code == 100) {
+                            layer.msg('删除成功', {icon: 6, time: 2000});
+                            setTimeout(function () {
+                                location.reload();
+                            }, 2000);
+                        } else {
+                            layer.msg(result.extendInfo.leave_del_error, {icon: 6, time: 2000});
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
 
 </body>
 </html>

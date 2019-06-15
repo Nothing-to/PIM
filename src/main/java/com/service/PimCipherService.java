@@ -1,14 +1,15 @@
 package com.service;
 
-import com.bean.PimLinkman;
+import com.bean.PimCipher;
 
 import java.util.List;
 
 /**
  * @Author: 刘冠麟
- * @Date: 2019-06-15 14:06
+ * @Date: 2019-06-15 16:18
  */
-public interface PimLinkmanService {
+public interface PimCipherService {
+
 
     /**
      * 根据 用户id 获取相应的内容
@@ -16,22 +17,24 @@ public interface PimLinkmanService {
      * @param belong
      * @return
      */
-    List<PimLinkman> getByBelongAll(Integer belong);
+    List<PimCipher> getByBelongAll(Integer belong);
+
 
     /**
      * 删除
      *
      * @param id
      */
-    void deleteLinkman(Integer id);
+    void deletePimCipher(Integer id);
 
 
     /**
      * 添加
      *
-     * @param pimLinkman
+     * @param pimCipher
      * @return
      */
-    PimLinkman addLinkman(PimLinkman pimLinkman);
+    PimCipher addPimCipher(PimCipher pimCipher);
+
 
 }
