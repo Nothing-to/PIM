@@ -56,6 +56,11 @@ public class LoginController {
         return new ModelAndView("mainPage");
     }
 
+    @GetMapping(value = "email")
+    public ModelAndView email(){
+        return new ModelAndView("email");
+    }
+
 
     /**
      * 登陆校验

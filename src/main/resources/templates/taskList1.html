@@ -12,19 +12,41 @@
 <body>
 <div data-role="page">
     <div data-role="header" data-position="fixed" data-theme="c">
-        <a href="biaobaihome.html" rel="external" data-role="button" data-inline="true" data-icon="back">返回</a>
+        <a href="/taskList" rel="external" data-role="button" data-inline="true" data-icon="back">返回</a>
         <h1>
             添加
         </h1>
     </div>
     <div role="main" class="ui-content">
-        <label for="userid">任务：</label><input type="text" id="userid" name="userid">
+        <label for="taskItem">任务：</label><input type="text" id="taskItem">
         <br>
         <hr style="height:3px;border:none;border-top:3px double gray;"/>
-        <input type="button" id="login" value="提交" role="button"/>
+        <input type="button" id="submit" value="提交" role="button"/>
     </div>
     <br/>
 </div>
+
+<script type="text/javascript">
+    $("#submit").click(function () {
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/taskListAddAJAX",
+            data: JSON.stringify({taskItem: $("#taskItem").val()}),
+            dataType: 'json',
+            success: function (result) {
+                if (result.code == 100) {
+                    location.href = "/taskList";
+                } else {
+                    alert("保存失败！！");
+                }
+            },
+            error: function () {
+                alert("未知异常！！");
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
