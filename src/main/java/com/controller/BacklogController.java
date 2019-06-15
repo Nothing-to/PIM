@@ -103,7 +103,7 @@ public class BacklogController {
         pimBacklog.setBacklogContent(content);
         pimBacklog.setBelong((Integer) session.getAttribute("LoginId"));
         pimBacklog.setBacklogDate(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()));
-        pimBacklog.setBacklogImage((new Random().nextInt(10) + 1) + ".jpg");
+        pimBacklog.setBacklogImage((new Random().nextInt(10) + 1) + ".jpeg");
         PimBacklog result = service.addBacklog(pimBacklog);
         if (result.equals(pimBacklog)) {
             return JsonMsg.success();
