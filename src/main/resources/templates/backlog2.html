@@ -12,7 +12,7 @@
 <body>
 <div data-role="page">
     <div data-role="header" data-position="fixed" data-theme="c">
-        <a href="/backlog" rel="external" data-role="button" data-inline="true" data-icon="back">返回</a>
+        <a href="/PIM/backlog" rel="external" data-role="button" data-inline="true" data-icon="back">返回</a>
         <h1>
             添加
         </h1>
@@ -34,12 +34,12 @@
         $.ajax({
             type: "POST",
             contentType: "application/json",
-            url: "/backlogAddAJAX",
+            url: "/PIM/backlogAddAJAX",
             data: JSON.stringify({userTitle: $("#userTitle").val(), UserContent: $("#UserContent").val()}),
             dataType: 'json',
             success: function (result) {
                 if (result.code == 100) {
-                    window.location.href = "/backlog";
+                    window.location.href = "/PIM/backlog";
                 } else {
                     alert("添加失败！！");
                 }

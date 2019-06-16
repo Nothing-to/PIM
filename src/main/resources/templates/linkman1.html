@@ -9,7 +9,7 @@
 <div data-role="page" id="pageone">
     <div data-role="content">
         <div data-role="header" data-position="fixed" data-theme="c">
-            <a href="/linkman" rel="external" data-role="button" data-inline="true" data-icon="back">返回</a>
+            <a href="/PIM/linkman" rel="external" data-role="button" data-inline="true" data-icon="back">返回</a>
             <h1>
                 添加
             </h1>
@@ -37,7 +37,7 @@
         $.ajax({
             type: "POST",
             contentType: "application/json",
-            url: "/linkmanAddAJAX",
+            url: "/PIM/linkmanAddAJAX",
             data: JSON.stringify({
                 LinkName: $("#LinkName").val(),
                 LinkNumber: $("#LinkNumber").val(),
@@ -47,7 +47,7 @@
             dataType: 'json',
             success: function (result) {
                 if (result.code == 100) {
-                    window.location.href = "/linkman";
+                    window.location.href = "/PIM/linkman";
                 } else {
                     alert("添加失败！！");
                 }

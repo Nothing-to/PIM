@@ -6,6 +6,7 @@ import com.bean.PimBacklog;
 import com.service.PimBacklogService;
 import com.util.JsonMsg;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,7 +20,9 @@ import java.util.Random;
  * @Author: 刘冠麟
  * @Date: 2019-06-11 20:34
  */
+
 @RestController
+@RequestMapping(value = "PIM")
 public class BacklogController {
 
     @Autowired

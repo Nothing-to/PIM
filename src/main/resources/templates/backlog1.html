@@ -12,7 +12,7 @@
 <body>
 <div data-role="detailpage" id="detailsPage" data-theme="c">
     <div data-role="header" data-position="fixed" data-theme="c">
-        <a href="/backlog" rel="external" data-role="button" data-inline="true" data-icon="back">返回</a>
+        <a href="/PIM/backlog" rel="external" data-role="button" data-inline="true" data-icon="back">返回</a>
         <h1>
             详细信息
         </h1>
@@ -30,7 +30,7 @@
             <div id="MycommentDiv" class="comment">
                 <textarea rows="100" cols="100" readonly id="backlogContent"
                           style="resize: none;height: 31.25rem;"></textarea>
-                <a href="/backlogEdit" rel='external'>
+                <a href="/PIM/backlogEdit" rel='external'>
                     <button value="编辑"></button>
                 </a>
                 <button id="backlogDel" value="删除"></button>
@@ -49,7 +49,7 @@
             type: "POST",
             dataType: "json",
             contentType: "application/json",
-            url: "/backlogDetailsAJAX",
+            url: "/PIM/backlogDetailsAJAX",
             success: function (result) {
                 $.each(result, function (idx, obj) {
                     id = obj.id;
@@ -70,11 +70,11 @@
             type: "POST",
             dataType: "json",
             contentType: "application/json",
-            url: "/backlogDel",
+            url: "/PIM/backlogDel",
             data: JSON.stringify({delId: id}),
             success: function (result) {
                 if (result.code == 100) {
-                    location.href = "/backlog";
+                    location.href = "/PIM/backlog";
                 } else {
                     alert("删除失败！！！");
                 }

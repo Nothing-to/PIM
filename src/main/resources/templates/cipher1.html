@@ -14,7 +14,7 @@
 <div id="contentPage2" data-role="page">
     <div data-role="content">
         <div data-role="header" data-position="fixed" data-theme="c">
-            <a href="/cipher" rel="external" data-role="button" data-inline="true" data-icon="back">返回</a>
+            <a href="/PIM/cipher" rel="external" data-role="button" data-inline="true" data-icon="back">返回</a>
             <h1>
                 添加
             </h1>
@@ -41,7 +41,7 @@
         $.ajax({
             type: "POST",
             contentType: "application/json",
-            url: "/cipherAddAJAX",
+            url: "/PIM/cipherAddAJAX",
             data: JSON.stringify({
                 platform: $("#platform").val(),
                 account: $("#account").val(),
@@ -51,7 +51,7 @@
             dataType: 'json',
             success: function (result) {
                 if (result.code == 100) {
-                    window.location.href = "/cipher";
+                    window.location.href = "/PIM/cipher";
                 } else {
                     alert("添加失败！！");
                 }

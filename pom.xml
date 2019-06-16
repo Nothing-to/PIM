@@ -96,7 +96,13 @@
           <artifactId>mysql-connector-java</artifactId>
           <version>8.0.15</version>
       </dependency>
-
+      <!--
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-tomcat</artifactId>
+                 <scope>provided</scope> 打成war的时候打开注释，本地开发用内嵌tomcat时加上注释
+      </dependency>
+-->
 
       <!-- JPA标准中，面向对象的语法检查、识别 -->
       <dependency>

@@ -22,12 +22,12 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             contentType: "application/json",
-            url: "/checkLogin",
+            url: "/PIM/checkLogin",
             data: JSON.stringify({userId:userId,password:password}),
             dataType: 'json',
             success: function (result) {
                 if (result.code==100) {
-                    window.location.href = "/mainPage";
+                    window.location.href = "/PIM/mainPage";
                 } else {
                     alert(result.extendInfo.login_error);
                 }

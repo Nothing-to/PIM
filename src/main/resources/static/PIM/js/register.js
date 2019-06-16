@@ -30,13 +30,13 @@ $("#formRegister").on("submit",function(){
     $.ajax({
         type: "POST",
         contentType: "application/json",
-        url: "/register",
+        url: "/PIM/register",
         data: JSON.stringify({userId:$("#name").val(),password:$("#pwd").val()}),
         dataType: "json",
         success: function(data){
             if (data.code==100){
                 alert("注册成功！");
-                location.href="/Login";
+                location.href="/PIM/Login";
             }else {
                 $("p#message").html(data.extendInfo.register_error);
                 $("#mypopup").popup('open');

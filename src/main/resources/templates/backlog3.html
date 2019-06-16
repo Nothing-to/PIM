@@ -12,7 +12,7 @@
 <body>
 <div data-role="page">
     <div data-role="header" data-position="fixed" data-theme="c">
-        <a href="/backlogDetails/0" rel="external" data-role="button" data-inline="true" data-icon="back">返回</a>
+        <a href="/PIM/backlogDetails/0" rel="external" data-role="button" data-inline="true" data-icon="back">返回</a>
         <h1>
             编辑
         </h1>
@@ -34,7 +34,7 @@
         $.ajax({
             type: "POST",
             dataType: "json",
-            url: "/backlogDetailsAJAX",
+            url: "/PIM/backlogDetailsAJAX",
             success: function (result) {
                 $.each(result, function (idx, obj) {
                     id = obj.id;
@@ -53,12 +53,12 @@
         $.ajax({
             type: "POST",
             contentType: "application/json",
-            url: "backlogEditAJAX",
+            url: "/PIM/backlogEditAJAX",
             data: JSON.stringify({id: id, title: $("#nameDiv").val(), content: $("#backlogContent").val()}),
             dataType: 'json',
             success: function (result) {
                 if (result.code == 100) {
-                    location.href = "/backlog";
+                    location.href = "/PIM/backlog";
                 } else {
                     alert("保存失败！！");
                 }

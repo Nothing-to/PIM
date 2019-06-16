@@ -12,7 +12,7 @@
 <body>
 <div data-role="page">
     <div data-role="header" data-position="fixed" data-theme="c">
-        <a href="/taskList" rel="external" data-role="button" data-inline="true" data-icon="back">返回</a>
+        <a href="/PIM/taskList" rel="external" data-role="button" data-inline="true" data-icon="back">返回</a>
         <h1>
             添加
         </h1>
@@ -31,12 +31,12 @@
         $.ajax({
             type: "POST",
             contentType: "application/json",
-            url: "/taskListAddAJAX",
+            url: "/PIM/taskListAddAJAX",
             data: JSON.stringify({taskItem: $("#taskItem").val()}),
             dataType: 'json',
             success: function (result) {
                 if (result.code == 100) {
-                    location.href = "/taskList";
+                    location.href = "/PIM/taskList";
                 } else {
                     alert("保存失败！！");
                 }

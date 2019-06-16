@@ -14,11 +14,11 @@
 
 <div id="contentPage2" data-role="page">
     <div data-role="header" data-position="fixed" data-theme="c">
-        <a href="/mainPage" rel="external" data-role="button" data-inline="true" data-icon="back">返回</a>
+        <a href="/PIM/mainPage" rel="external" data-role="button" data-inline="true" data-icon="back">返回</a>
         <h1>
             密码
         </h1>
-        <a href="/cipherAdd" rel="external" data-role="button" data-inline="true" data-icon="plus">添加</a>
+        <a href="/PIM/cipherAdd" rel="external" data-role="button" data-inline="true" data-icon="plus">添加</a>
     </div>
 
     <div data-role="content">
@@ -35,7 +35,7 @@
         $.ajax({
             type: "POST",
             dataType: "json",
-            url: "/cipherAJAX",
+            url: "/PIM/cipherAJAX",
             success: function (result) {
                 $.each(result, function (idx, obj) {
                     $("#cipherList").append("<li><div data-role='collapsible'><p style='display: none'>"
@@ -64,7 +64,7 @@
                 $.ajax({
                     dataType: "json",
                     contentType: "application/json",
-                    url: "/cipherDeleteAJAX",
+                    url: "/PIM/cipherDeleteAJAX",
                     type: "DELETE",
                     data: JSON.stringify({delId: temp}),
                     success: function (result) {

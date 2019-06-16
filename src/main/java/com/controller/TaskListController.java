@@ -17,6 +17,7 @@ import java.util.List;
  * @Date: 2019-06-15 18:22
  */
 @RestController
+@RequestMapping(value = "PIM")
 public class TaskListController {
 
     @Autowired

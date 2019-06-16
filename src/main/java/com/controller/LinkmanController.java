@@ -17,6 +17,7 @@ import java.util.List;
  * @Date: 2019-06-15 13:19
  */
 @RestController
+@RequestMapping(value = "PIM")
 public class LinkmanController {
 
     @Autowired

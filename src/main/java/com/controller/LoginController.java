@@ -6,10 +6,7 @@ import com.service.PimAuthenticationService;
 import com.util.JsonMsg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +16,8 @@ import javax.servlet.http.HttpSession;
  * @Author: 刘冠麟
  * @Date: 2019-06-06 11:09
  */
-@Controller
+@Controller()
+@RequestMapping(value = "PIM")
 public class LoginController {
 
     @Autowired
@@ -32,6 +30,16 @@ public class LoginController {
      */
     @GetMapping(value = "Login")
     public String Login() {
+        return "Login";
+    }
+
+    /**
+     * 登陆页面
+     *
+     * @return
+     */
+    @GetMapping(value = "")
+    public String defaultLogin() {
         return "Login";
     }
 
@@ -101,6 +109,11 @@ public class LoginController {
             return JsonMsg.success();
         }
         return JsonMsg.fail().addInfo("register_error", "注册失败！！");
+    }
+
+    @GetMapping(value = "dog")
+    public ModelAndView dog(){
+        return new ModelAndView("dog");
     }
 
 
